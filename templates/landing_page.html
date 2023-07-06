@@ -1,0 +1,29 @@
+<!-- @format -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href=" {% static '/css/home.css' %}" />
+    <link rel="stylesheet" href=" {% static 'css/fafa/css/all.min.css' %}" />
+  </head>
+  <body img src=" {%  static 'css/img/hospital-g27603d53a_1920.jpg' %}">
+    <div id="box">
+      <ul>
+        <li>
+          <a href="{% url 'signup' %}"><i class="fa fa-home"></i> Signup</a>
+        </li>
+        <li>
+          <a href="{% url 'login' %}"><i class="fa fa-key"> login </i></a>
+        </li>
+      </ul>
+      <div id="home">
+        <section class="content">
+          <h2>WELCOME</h2>
+        </section>
+      </div>
+  </body>
+</html>

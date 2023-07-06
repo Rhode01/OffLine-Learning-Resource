@@ -1,0 +1,110 @@
+{% load static %}
+{% load static %}  
+{% include 'navbar.html' %} 
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/questions.css' %}"
+    />
+    <script src="{% static 'js/script.js' %}"></script>
+  </head>
+  <body>
+    <section class="dashboard">
+        <div class="top">
+        <i class="uil uil-bars sidebar-toggle"></i>
+
+        <div class="search-box">
+          <i class="uil uil-search"></i>
+          <input type="text" placeholder="Search here..." />
+        </div>
+        <img/>
+      </div>
+       <div class="dash-content">
+            <div class="title">
+                <div class="overview">
+                    <div class="title">
+                    <span class="text">Questions</span>
+                 </div>
+                </div>
+            </div> 
+                <div class="activity-data">
+                    <div class="data names">
+                        {% for question in questions  %}   
+                        <span class="data-title">
+                            <h4>{{question.text}}</h4>
+                        </span>
+                        <form method="POST" action="{% url 'handle_user_answer' %}">
+                          {% csrf_token %}
+                            <div class ="question-form">
+                                <label>
+                                    <span>Answer:
+                                        <input type="text" name="answer" placeholder="Write Your Answer Here" user="{{request.user.username}}" style="height:100px"required>
+                                        <input type="hidden" name="question_id" value="{{ question.id }}">
+                                        <input type="hidden" name="question" value="{{ question.text }}">
+                
+                                    </span>
+                                </label>
+                                
+                            </div>
+                        
+                        {%empty%}
+                            <h3>NO QUESTIONS AVAILABLE</h3> 
+                        {% endfor %} 
+                        <input type ="submit" value="Submit"style="text-decoration:None;background-color:#707070;
+                                    color: white;
+                                    padding: 12px 20px;
+                                    border: none;
+                                    padding: 12px;
+                                    width:100px;
+                                    height:50px;
+                                    margin-right:1000px;
+                                    font-size: 18px;
+                                    border-radius: 4px;
+                                    cursor: pointer;" />
+                        {% if questions.has_next %}
+                            <a href="?page={{ questions.next_page_number }}"style="text-decoration:None;background-color:#707070;
+                                    color: white;
+                                    padding: 12px 20px;
+                                    border: none;
+                                    padding: 12px;
+                                    width:70px;
+                                    height:50px;
+                                    font-size: 18px;
+                                    border-radius: 4px;
+                                    cursor: pointer;">Next</a>
+
+                        {% endif %}
+                        {% if has_previous %}
+                            <a href="?page={{ previous_page_number }}"style="text-decoration:None;background-color:#707070;
+                                    color: white;
+                                    padding: 12px 20px;
+                                    border: none;
+                                    padding: 12px;
+                                    width:100px;
+                                    height:50px;
+                                    font-size: 18px;
+                                    border-radius: 4px;
+                                    cursor: pointer;">Previous</a>
+                            {% endif %}
+                      
+                            </form> 
+
+                    </div>                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </div>
+  </body>
+</html>

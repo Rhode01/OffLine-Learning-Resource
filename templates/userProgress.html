@@ -1,0 +1,57 @@
+{% load static %} 
+{% include 'navbar.html' %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% comment %} <link rel="stylesheet" href="{% static 'css/style.css' %}" /> {% endcomment %}
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/questions.css' %}" />
+    <script src="{% static 'js/script.js' %}"></script>
+  </head>
+  <body>
+    <section class="dashboard">
+      <div class="top">
+        <i class="uil uil-bars sidebar-toggle"></i>
+        <div class="search-box">
+          <i class="uil uil-search"></i>
+          <input type="text" placeholder="Search here..." />
+        </div>
+        <img />
+      </div>
+      <div class="dash-content">
+        <div class="overview">
+            <div class="title">
+              <span class="text"><h1>User Profile</h1></span>
+            </div>
+            <img src="" alt="Your profile Picture" />
+            {%for subject in subject%}
+           <div class="activity-data">
+                    <div class="data names">
+                        <span class="data-title">
+                            {{subject}}
+                        </span>
+                        
+                     {% comment %} <div class="menu-items">
+                        <ul class="nav-links">
+                            <li>
+                                <a href="">
+                                    <i class="uil uil-files-landscapes"></i>
+                                    <span class="link-name"></span>
+                                </a>
+                            </li>
+                    </div> {% endcomment %}
+                    {% endfor %}
+                    <span class="text"></span> 
+                  </div>
+                  
+          </div>
+      </div>
+    </section>
+  </body>
+</html>

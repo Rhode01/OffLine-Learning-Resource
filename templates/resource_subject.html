@@ -1,0 +1,56 @@
+{% load static %} {% include 'navbar.html' %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/questions.css' %}" />
+    <script src="{% static 'js/script.js' %}"></script>
+  </head>
+  <body>
+    <section class="dashboard">
+      <div class="top">
+        <i class="uil uil-bars sidebar-toggle"></i>
+        <div class="search-box">
+          <i class="uil uil-search"></i>
+          <input type="text" placeholder="Search here..." />
+        </div>
+        <img />
+      </div>
+      <div class="dash-content">
+        <div class="overview">
+            <div class="title">
+              <span class="text"><h1>Subjects Available</h1></span>
+            </div>
+            {% if subjects %}
+           <div class="activity-data">
+                    <div class="data names">
+                        <span class="data-title">
+                            <h4>Resources Available</h4>
+                        </span>
+                        {% for subject  in subjects %}
+                     <div class="menu-items">
+                        <ul class="nav-links">
+                            <li>
+                                <a href="{% url 'subject_resources' subject.category subject.name %}">
+                                    <i class="uil uil-files-landscapes"></i>
+                                    <span class="link-name">{{subject.name}}</span>
+                                </a>
+                            </li>
+                    </div>
+                    {%empty%}
+                    <span class="text">!! No Resources Available</span> 
+                  </div>
+                  {% endfor %}
+                   {% endif %}
+          </div>
+      </div>
+    </section>
+  </body>
+</html>

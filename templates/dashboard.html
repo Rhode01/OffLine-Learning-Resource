@@ -1,0 +1,25 @@
+<!-- @format -->
+
+{% load static %} 
+{% if request.user.is_authenticated %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+
+    <title>Student Dashboard Panel</title>
+    
+  </head>
+  {% include 'navbar.html' %} {% include 'rightbar.html' %}
+</html>
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+{% else %}
+  <h1>Please Login in to access this page</h1>
+  <a href="{% url 'login' %}"> Login</a>
+{% endif %}
